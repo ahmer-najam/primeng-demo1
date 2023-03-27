@@ -1,0 +1,75 @@
+<div class="container" style="margin-top: 30px">
+  <p-card>
+    <div
+      class="bg-purple-100 py-2 px-3 border-purple-400 border-[1px] rounded-md mb-3 w-[100%]"
+    >
+      <h4>Bank</h4>
+    </div>
+    <p-table
+      #dt1
+      [value]="products"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [paginator]="true"
+      [rows]="3"
+      responsiveLayout="scroll"
+      [rowsPerPageOptions]="[3, 6, 9, 15]"
+      [globalFilterFields]="['code', 'name', 'category']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <span class="p-input-icon-left" style="margin-left: 10px">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              class="w-[100%] md:w-[500px]"
+              (input)="dt1.filterGlobal($event.target.value, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="code" style="width: 20%">
+            Code <p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="name" style="width: 40%">
+            Name <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="category" style="width: 20%">
+            Category <p-sortIcon field="category"></p-sortIcon>
+          </th>
+          <th pSortableColumn="quantity" style="width: 20%">
+            Quantity <p-sortIcon field="quantity"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr
+          class="cursor-pointer hover:bg-purple-200"
+          (click)="showModal(product)"
+        >
+          <td>{{ product.code }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.quantity }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>
+
+<p-dialog
+  [(visible)]="modalVisible"
+  [closeOnEscape]="false"
+  [closable]="false"
+  [style]="{ width: '80vw', heigh: '20vh' }"
+  class="overflow-y-auto"
+>
+  <app-bank-form
+    [formData]="selectedRow"
+    (closeDialog)="closeModal()"
+    (submittedData)="receiveData($event)"
+  ></app-bank-form>
+</p-dialog>

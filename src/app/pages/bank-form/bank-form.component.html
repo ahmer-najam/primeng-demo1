@@ -1,0 +1,107 @@
+<div
+  class="bg-purple-100 py-2 px-3 border-purple-400 border-[1px] rounded-md mb-3 w-[100%] flex"
+>
+  <h4>Bank Form</h4>
+
+  <div class="ml-auto">
+    <button
+      type="button"
+      pripple=""
+      class="mt-2 p-ripple p-element ng-tns-c24-0 p-dialog-header-icon p-dialog-header-close p-link ng-star-inserted"
+      ng-reflect-ng-class="[object Object]"
+      tabindex="-1"
+      (click)="onClose()"
+    >
+      <span
+        class="p-dialog-header-close-icon ng-tns-c24-0 pi pi-times"
+        ng-reflect-ng-class="pi pi-times"
+      ></span>
+    </button>
+  </div>
+</div>
+<form
+  #form="ngForm"
+  name="form"
+  autocomplete="off"
+  *ngIf="formData"
+  (submit)="onSubmit(form)"
+  novalidate
+>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group m-1">
+        <label class="text-capitalize font-bold mb-1">Code </label>
+        <input
+          class="form-control"
+          name="code"
+          id="code"
+          #code="ngModel"
+          [(ngModel)]="formData.code"
+          pattern=""
+        />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group m-1">
+        <label class="text-capitalize font-bold mb-1">Name </label>
+        <input
+          class="form-control"
+          name="name"
+          id="name"
+          #name="ngModel"
+          [(ngModel)]="formData.name"
+          pattern=""
+        />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group m-1">
+        <label class="text-capitalize font-bold mb-1">Category </label>
+        <input
+          class="form-control"
+          name="category"
+          id="category"
+          #category="ngModel"
+          [(ngModel)]="formData.category"
+          pattern=""
+        />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group m-1">
+        <label class="text-capitalize font-bold mb-1">Qty </label>
+        <input
+          class="form-control"
+          name="quantity"
+          id="quantity"
+          #quantity="ngModel"
+          [(ngModel)]="formData.quantity"
+          pattern=""
+        />
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="form-group">
+      <button
+        id="submit"
+        type="submit"
+        class="btn btn-outline-primary ml-3"
+        [disabled]="form.invalid"
+        [hidden]="this.isFormSubmitted == true"
+      >
+        <i class="fa fa-database" aria-hidden="true"></i> Submit
+      </button>
+      <button
+        id="closeForm"
+        type="button"
+        class="btn btn-outline-primary ml-1"
+        (click)="displayDialog = false"
+        [hidden]="this.isFormSubmitted == true"
+      >
+        <i class="fa fa-window-close" aria-hidden="true"></i> Close
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,13 @@
+{
+  "products": [
+    { "code": "PRD-001", "name": "Nike", "category": "shoe", "quantity": 10 },
+    { "code": "PRD-002", "name": "Puma", "category": "shoe", "quantity": 10 },
+    {
+      "code": "PRD-003",
+      "name": "Hush Puppies",
+      "category": "shoe",
+      "quantity": 10
+    },
+    { "code": "PRD-004", "name": "Bata", "category": "shoe", "quantity": 10 }
+  ]
+}
