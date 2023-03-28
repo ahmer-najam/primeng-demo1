@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,20 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { ToastrModule } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+import { AvatarModule } from 'primeng/avatar';
+import { SpinnerModule } from 'primeng/spinner';
+
 import { BankFormComponent } from './pages/bank-form/bank-form.component';
+import { StudentListComponent } from './pages/student-list/student-list.component';
+import { StudentFormComponent } from './pages/student-form/student-form.component';
+import { SpinnerComponent } from './common/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +37,9 @@ import { BankFormComponent } from './pages/bank-form/bank-form.component';
     HomeComponent,
     BankComponent,
     BankFormComponent,
+    StudentListComponent,
+    StudentFormComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +52,18 @@ import { BankFormComponent } from './pages/bank-form/bank-form.component';
     InputTextModule,
     DialogModule,
     FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    ToastrModule.forRoot(),
+    AvatarModule,
+    SpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
