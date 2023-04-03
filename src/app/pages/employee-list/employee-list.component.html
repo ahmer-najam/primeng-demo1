@@ -1,0 +1,92 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div *ngIf="!isLoading">
+  <div class="card">
+    <p-progressSpinner
+      styleClass="w-4rem h-4rem"
+      strokeWidth="8"
+      fill="var(--surface-ground)"
+      animationDuration=".5s"
+    ></p-progressSpinner>
+  </div>
+  <div class="container" style="margin-top: 30px">
+    <p-card>
+      <div
+        class="bg-purple-100 py-2 px-3 border-purple-400 border-[1px] rounded-md mb-3 w-[100%]"
+      >
+        <h4>Employees</h4>
+      </div>
+      <p-table
+        #dt1
+        [value]="employees"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="3"
+        responsiveLayout="scroll"
+        [rowsPerPageOptions]="[3, 6, 9, 15]"
+        [globalFilterFields]="['name', 'email', 'deptName']"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex">
+            <p-button
+              (click)="showModal({})"
+              icon="pi pi-plus"
+              styleClass="p-button-rounded p-button-secondary p-button-text p-button-raised"
+            ></p-button>
+
+            <span class="p-input-icon-left" style="margin-left: 10px">
+              <i class="pi pi-search"></i>
+              <input
+                pInputText
+                type="text"
+                class="w-[100%] md:w-[500px]"
+                (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                placeholder="Search keyword"
+              />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="id" style="width: 20%">
+              Code <p-sortIcon field="id"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name" style="width: 40%">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="email" style="width: 20%">
+              Email <p-sortIcon field="email"></p-sortIcon>
+            </th>
+            <th pSortableColumn="deptName" style="width: 20%">
+              Dept# <p-sortIcon field="deptName"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-employee>
+          <tr
+            class="cursor-pointer hover:bg-purple-200"
+            (click)="showModal(student)"
+          >
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.deptName }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+
+  <p-dialog
+    [(visible)]="modalVisible"
+    [closeOnEscape]="false"
+    [closable]="false"
+    [style]="{ width: '80vw', heigh: '20vh' }"
+    class="overflow-y-auto"
+  >
+    <app-student-form
+      [formData]="this.selectedRow"
+      (closeDialog)="closeModal()"
+      (submittedData)="receiveData($event)"
+    ></app-student-form>
+  </p-dialog>
+</div>

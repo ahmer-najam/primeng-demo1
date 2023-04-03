@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { BankFormComponent } from './pages/bank-form/bank-form.component';
 import { StudentListComponent } from './pages/student-list/student-list.component';
 import { StudentFormComponent } from './pages/student-form/student-form.component';
 import { SpinnerComponent } from './common/spinner/spinner.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { SpinnerComponent } from './common/spinner/spinner.component';
     StudentListComponent,
     StudentFormComponent,
     SpinnerComponent,
+    EmployeeComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import { SpinnerComponent } from './common/spinner/spinner.component';
     InputTextModule,
     DialogModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

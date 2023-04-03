@@ -1,0 +1,16 @@
+{
+  "departments": [
+    {
+      "deptId": 101,
+      "deptName": "Sales"
+    },
+    {
+      "deptId": 102,
+      "deptName": "Operations"
+    },
+    {
+      "deptId": 103,
+      "deptName": "IT"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "employees": [
+    {
+      "id": 101,
+      "name": "Shyam",
+      "email": "shyamjaiswal@gmail.com",
+      "deptId": 101
+    },
+    { "id": 102, "name": "Bob", "email": "bob32@gmail.com", "deptId": 102 },
+    { "id": 103, "name": "Jai", "email": "jai87@gmail.com", "deptId": 103 },
+    { "id": 104, "name": "Rao", "email": "rao897@gmail.com", "deptId": 104 },
+    {
+      "id": 105,
+      "name": "Farrukh",
+      "email": "farrukh.hassan@gmail.com",
+      "deptId": 101
+    },
+    {
+      "id": 106,
+      "name": "Rehman",
+      "email": "rehman.alvi@gmail.com",
+      "deptId": 102
+    }
+  ]
+}

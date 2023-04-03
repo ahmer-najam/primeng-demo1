@@ -18,6 +18,7 @@ export class StudentService {
   }
 
   getAll(): AngularFirestoreCollection<Student> {
+    console.log('GetAllCalled....');
     return this.studentsRef;
   }
 
