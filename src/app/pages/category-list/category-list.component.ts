@@ -23,24 +23,32 @@ export class CategoryListComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
     this.isLoading = true;
     this.service
       .getAll()
-      .snapshotChanges()
-      .pipe(
-        map((changes) =>
-          changes.map((c) => ({
-            id: c.payload.doc.id,
-            ...c.payload.doc.data(),
-          }))
-        )
-      )
-      .subscribe((data) => {
-        console.log(data);
-        this.categories = data;
+      .valueChanges()
+      .subscribe((list) => {
+        this.categories = list;
         this.isLoading = false;
       });
+    // this.service
+    //   .getAll()
+    //   .valueChanges()
+    //   .pipe(
+    //     map((changes) =>
+    //       changes.map((c) => ({
+    //         id: c.payload.doc.id,
+    //         ...c.payload.doc.data(),
+    //       }))
+    //     )
+    //   )
+    //   .subscribe((data) => {
+    //     this.categories = data;
+    //     this.isLoading = false;
+    //   });
   }
 
   showModal(row) {
@@ -61,15 +69,18 @@ export class CategoryListComponent implements OnInit {
       this.categories = [data, ...this.categories];
     }
 
-    debugger;
     let res;
     if (data['$key'] == undefined) {
       res = this.service.create(data);
-    } else {
-      this.service.update(data.id, data).then((response) => {
-        res = response;
+      res.then((i) => {
+        data.id = i['id'];
+        this.service.update(data.id, data);
       });
+    } else {
+      res = this.service.update(data.id, data);
     }
+
+    //this.categories = [data, ...this.categories];
 
     this.toastr.success('Record Submitted', 'Database');
   }
