@@ -2,3 +2,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Buttons */
+.btnstyle {
+  background-color: #f3e8ff;
+  color: black;
+  border: 1px solid rgb(192 132 252);
+}
+
+.btnstyle:hover {
+  background-color: #e5d1fa;
+}
+
+/* Grid Paginator */
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #f3e8ff !important;
+  border-color: #8c4cd3 !important;
+  color: #8c4cd3 !important;
+  border: 1px solid !important;
+}

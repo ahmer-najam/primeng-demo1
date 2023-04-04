@@ -36,6 +36,11 @@ export class TopbarComponent implements OnInit {
             icon: 'pi pi-fw pi-users',
             routerLink: ['/employee-list'],
           },
+          {
+            label: 'Category',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/category-list'],
+          },
         ],
       },
     ];

@@ -42,6 +42,10 @@ export class StudentListComponent implements OnInit {
     this.modalVisible = true;
   }
 
+  closeModal() {
+    this.modalVisible = false;
+  }
+  
   receiveData(data: Student) {
     debugger;
     if (data.$key != undefined) {
@@ -59,7 +63,5 @@ export class StudentListComponent implements OnInit {
     }
   }
 
-  closeModal() {
-    this.modalVisible = false;
-  }
+
 }

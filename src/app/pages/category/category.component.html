@@ -1,0 +1,82 @@
+<div
+  class="bg-purple-100 py-2 px-3 border-purple-400 border-[1px] rounded-md mb-3 w-[100%] flex"
+>
+  <h4>Category Form</h4>
+
+  <div class="ml-auto">
+    <button
+      type="button"
+      pripple=""
+      class="mt-2 p-ripple p-element ng-tns-c24-0 p-dialog-header-icon p-dialog-header-close p-link ng-star-inserted"
+      ng-reflect-ng-class="[object Object]"
+      tabindex="-1"
+      (click)="onClose()"
+    >
+      <span
+        class="p-dialog-header-close-icon ng-tns-c24-0 pi pi-times"
+        ng-reflect-ng-class="pi pi-times"
+      ></span>
+    </button>
+  </div>
+</div>
+<form
+  #form="ngForm"
+  lastName="form"
+  autocomplete="off"
+  *ngIf="formData"
+  (submit)="onSubmit(form)"
+  novalidate
+>
+  <div class="row">
+    <input
+      type="hidden"
+      id="$key"
+      name="$key"
+      [(ngModel)]="formData.$key"
+      #$key="ngModel"
+    />
+    <input
+      type="hidden"
+      id="id"
+      name="id"
+      [(ngModel)]="formData.id"
+      #$key="ngModel"
+    />
+    <div class="col-sm-6">
+      <div class="form-group m-1">
+        <label class="text-capitalize font-bold mb-1">Category</label>
+        <input
+          class="form-control"
+          name="category"
+          id="category"
+          #category="ngModel"
+          [(ngModel)]="formData.category"
+          pattern=""
+        />
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="form-group">
+      <button
+        id="submit"
+        type="submit"
+        class="btn btnstyle ml-3"
+        [disabled]="form.invalid"
+        [hidden]="this.isFormSubmitted == true"
+      >
+        <i class="fa fa-database" aria-hidden="true"></i> Submit
+      </button>
+      <button
+        id="closeForm"
+        type="button"
+        class="btn btn-outline-primary ml-1"
+        (click)="displayDialog = false"
+        [hidden]="this.isFormSubmitted == true"
+      >
+        <i class="fa fa-window-close" aria-hidden="true"></i> Close
+      </button>
+    </div>
+  </div>
+</form>

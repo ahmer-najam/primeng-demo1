@@ -25,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { AvatarModule } from 'primeng/avatar';
 import { SpinnerModule } from 'primeng/spinner';
+import { ToastModule } from 'primeng/toast';
 
 import { BankFormComponent } from './pages/bank-form/bank-form.component';
 import { StudentListComponent } from './pages/student-list/student-list.component';
@@ -32,6 +33,9 @@ import { StudentFormComponent } from './pages/student-form/student-form.componen
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
+import { CategoryListComponent } from './pages/category-list/category-list.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,8 @@ import { EmployeeListComponent } from './pages/employee-list/employee-list.compo
     SpinnerComponent,
     EmployeeComponent,
     EmployeeListComponent,
+    CategoryListComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,11 +70,12 @@ import { EmployeeListComponent } from './pages/employee-list/employee-list.compo
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ closeButton: true, timeOut: 3000 }),
+    ToastModule,
     AvatarModule,
     SpinnerModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
