@@ -46,13 +46,18 @@
       <div class="form-group m-1">
         <label class="text-capitalize font-bold mb-1">Category</label>
         <input
-          class="form-control"
+          class="my-textbox"
           name="category"
           id="category"
           #category="ngModel"
           [(ngModel)]="formData.category"
           pattern=""
+          required=""
+          [class.is-invalid]="category.touched && category.invalid"
         />
+        <small class="text-danger" *ngIf="category.touched && category.invalid">
+          Please enter valid Category</small
+        >
       </div>
     </div>
   </div>
@@ -62,20 +67,11 @@
       <button
         id="submit"
         type="submit"
-        class="btn btnstyle ml-3"
+        class="my-button"
         [disabled]="form.invalid"
         [hidden]="this.isFormSubmitted == true"
       >
         <i class="fa fa-database" aria-hidden="true"></i> Submit
-      </button>
-      <button
-        id="closeForm"
-        type="button"
-        class="btn btn-outline-primary ml-1"
-        (click)="displayDialog = false"
-        [hidden]="this.isFormSubmitted == true"
-      >
-        <i class="fa fa-window-close" aria-hidden="true"></i> Close
       </button>
     </div>
   </div>

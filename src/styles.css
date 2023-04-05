@@ -21,3 +21,16 @@
   color: #8c4cd3 !important;
   border: 1px solid !important;
 }
+
+/* Dialog */
+.p-dialog-draggable .p-dialog-header {
+  padding-top: 5px !important;
+}
+
+.my-button {
+  @apply bg-purple-400 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-1 focus:outline-purple-500;
+}
+
+.my-textbox {
+  @apply border border-purple-300 shadow-md rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow;
+}
